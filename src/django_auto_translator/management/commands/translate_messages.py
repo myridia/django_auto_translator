@@ -8,7 +8,7 @@ import random
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from django_deep_translator.utils import get_translator
+from django_auto_translator.utils import get_translator
 
 logger = logging.getLogger(__name__)
 
