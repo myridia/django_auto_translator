@@ -1,6 +1,6 @@
 import six
 
-from django_deep_translator.compat import importlib
+from django_auto_translator.compat import importlib
 from django.conf import settings
 
 def perform_import(val, setting_name):
@@ -36,7 +36,7 @@ def get_translator():
     Returns the default translator.
     """
     TranslatorService = getattr(settings, 'PO_TRANSLATOR_SERVICE',
-                                'django_deep_translator.services.GoogleTranslatorService')
-    
+                                'django_auto_translator.services.GoogleTranslatorService')
+    #print(TranslatorService)
     translator = perform_import(TranslatorService, 'PO_TRANSLATOR_SERVICE')()
     return translator

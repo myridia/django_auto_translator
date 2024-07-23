@@ -25,13 +25,16 @@ class BaseTranslatorService:
 
 class GoogleTranslatorService(BaseTranslatorService):
 
-
     def translate_string(self, text, target_language, source_language='auto'):
         self.service = GoogleTranslator(source=source_language, target=target_language)
         
         assert isinstance(text, six.string_types), '`text` should a string literal'
         return self.service.translate(text)
     
+    def get_supported_languages(self):
+      langs_dict = GoogleTranslator().get_supported_languages(as_dict=True)
+      return langs_dict
+
 
 class MyMemoryTranslatorService(BaseTranslatorService):
 
