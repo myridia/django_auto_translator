@@ -62,4 +62,4 @@ LOCALE_PATHS = (
 
 Forked from:  https://github.com/wmo-raf/django-deep-translator
 
-Artwork Logo from: 
+Artwork Logo from Eypros: https://openclipart.org/artist/Eypros 
