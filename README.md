@@ -2,34 +2,35 @@
 
 Autotranslate django `.po` translation files package built on top of  [deep-translator](https://pypi.org/project/deep-translator/)
 
+Finds all the generated pot (.po) files under the locale paths (LOCALE_PATHS) specified in django project settings, and translates them automatically with default source language as **english**.
 
 
-## Installation
+
+## Install 
+
+### Install via PIP 
 
 ```bash
-pip install django-auto-translator
-```
+  pip install django-auto-translator
+  ```
 
-Add `'django-auto-translator'` to your `INSTALLED_APPS` setting:
+## Add `'django-auto-translator'` to your `INSTALLED_APPS` setting:
 
 ```py
 INSTALLED_APPS = (
-        ...
-        'django-auto-translator',
-    )
+ ...
+ 'django-auto-translator',
+ )
 
 ```
 
-## Quickstart
+## Command translate to all  languages 
 
 ```bash 
 python manage.py translate_messages
 ```
 
-The command finds all the generated pot (.po) files under the locale paths (LOCALE_PATHS) specified in django project settings, and translates them automatically with default source language as **english**.
-
-## Options
-
+## Option Parameter
 - ``-f, --set-fuzzy``: Set the 'fuzzy' flag on autotranslated entries
 - ``-l, --locale 'locale'``: Only translate the specified locales
 - ``-u, --untranslated``: Only translate the untranslated messages
@@ -38,12 +39,12 @@ The command finds all the generated pot (.po) files under the locale paths (LOCA
 - ``-t, --throttle``: Throttle the maximum of seconds for the next translate request(default=10 sec)
          
 
-
+### Example:
 ```bash
     python manage.py translate_messages -l 'de' -l 'es'
 ```
 
-## Settings
+## Important Django Language Setting
 
 In your settings, list the relative path to locale folders, example:
 
@@ -55,6 +56,8 @@ LOCALE_PATHS = (
     'services/locale',
 )
 ```
+
+
 
 ---
 
