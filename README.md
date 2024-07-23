@@ -15,7 +15,7 @@ Add `'django-auto-translator'` to your `INSTALLED_APPS` setting:
 ```py
 INSTALLED_APPS = (
         ...
-        'django-deep-translator',
+        'django-auto-translator',
     )
 
 ```
