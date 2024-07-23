@@ -69,7 +69,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.set_options(**options)
-
         assert getattr(settings, 'USE_I18N', False), 'i18n framework is disabled'
         assert getattr(settings, 'LOCALE_PATHS', []), 'locale paths is not configured properly'
         for directory in settings.LOCALE_PATHS:
@@ -84,7 +83,7 @@ class Command(BaseCommand):
                     target_language = os.path.basename(os.path.dirname(root))
 
                     if self.locale and target_language not in self.locale:
-                        logger.info('skipping translation for locale `{}`'.format(target_language))
+                        #self.print('skipping translation for locale `{}`'.format(target_language))
                         continue
 
                     self.translate_file(root, file, target_language)
@@ -97,7 +96,6 @@ class Command(BaseCommand):
         :param file_name:       name of the file to be translated (it should be a pot file)
         :param target_language: language in which the file needs to be translated
         """
-        logger.info('filling up translations for locale `{}`'.format(target_language))
         po = polib.pofile(os.path.join(root, file_name))
 
         if target_language in ['cn','zh_CN','zh_cn','zh-hans','zh-HAns','zh_HAns','zh_Hans','zh_hans']: 
@@ -107,7 +105,9 @@ class Command(BaseCommand):
             target_language = 'iw'
             
         if target_language in ['nb']: 
-            target_language = 'no'                        
+            target_language = 'no'
+            
+
             
         targets = self.count(po)
         count = 0
@@ -118,7 +118,9 @@ class Command(BaseCommand):
             self.print("...source language {0} or target language {1} is not supported".format(self.source_language, target_language))
             return
         
+        self.print('filling up missing translations for locale `{}`'.format(target_language))        
         for entry in po:
+            #print(target_language)
             # skip translated
             if self.skip_translated and entry.translated():
                 continue
@@ -128,8 +130,6 @@ class Command(BaseCommand):
               if not self.is_text(entry.msgid):
                   continue            
 
-            if self.throttle_seconds:              
-              time.sleep(self.throttle_seconds)
             #print( dir(get_translator) )
 
             if entry.msgid_plural != "":
@@ -146,12 +146,17 @@ class Command(BaseCommand):
                     self.print("\t{0}\t\t| {1}".format(target_language_name,entry.msgstr_plural[1]))
                     count += 1 
                     po.save()
+                    if self.throttle_seconds:              
+                      time.sleep(self.throttle_seconds)
+                    
             else: 
                if entry.msgstr == "":                                                              
                  self.print("{0}/{1}\t{2} -> \t| {3}".format(count, targets, source_language_name, entry.msgid))
                  entry.msgstr = translation.translate_string(text=entry.msgid, source_language=self.source_language, target_language=target_language)
                  self.print("\t{0} \t| {1}".format(target_language_name,entry.msgstr))
                  po.save()
+                 if self.throttle_seconds:              
+                   time.sleep(self.throttle_seconds)                 
                  count += 1                  
             if self.set_fuzzy:
                 self.print("...flog to fuzzy")               
@@ -189,9 +194,12 @@ class Command(BaseCommand):
         print(msg)
 
     def get_language_name(self, code):
-      translation = get_translator()        
+      translation = get_translator()
+      #print(dir(translation))
+
       supported_langs = translation.get_supported_languages()
       for i in supported_langs:
         if code == supported_langs[i]: 
           return i
+
       return ''

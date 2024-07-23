@@ -37,6 +37,6 @@ def get_translator():
     """
     TranslatorService = getattr(settings, 'PO_TRANSLATOR_SERVICE',
                                 'django_auto_translator.services.GoogleTranslatorService')
-    
+    #print(TranslatorService)
     translator = perform_import(TranslatorService, 'PO_TRANSLATOR_SERVICE')()
     return translator
