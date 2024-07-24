@@ -2,7 +2,7 @@
 # For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
 
 name: Publish to pypi
-on: release
+on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
