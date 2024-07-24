@@ -5,7 +5,7 @@ name: Publish to pypi
 on: push
 jobs:
   first-job:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps: 
       - run: python -m pip install --upgrade pip
       - run: pip install setuptools wheel twine
