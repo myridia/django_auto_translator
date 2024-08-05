@@ -35,7 +35,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: get_repository
         run: |
-          apt-get install git -y
+          sudo apt-get install git -y
           git clone https://github.com/veto8/Apptheme.git
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
