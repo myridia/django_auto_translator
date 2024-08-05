@@ -1,6 +1,6 @@
 #how to deploy a xml action file for github https://myridia.com/dev_posts/reply/3904
 name: Publish to pypi
-on: push
+on: release
 jobs:
   first-job:
     runs-on: ubuntu-latest
