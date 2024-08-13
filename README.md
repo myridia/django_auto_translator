@@ -1,6 +1,3 @@
-[![Upload Python Package](https://github.com/myridia/django-auto-translator/actions/workflows/publish.yml/badge.svg)](https://github.com/myridia/django-auto-translator/actions/workflows/publish.yml)
-
-
 # ![django-deep-translator](img/django-deep-translator.png ) django-auto-translator  
 
 Autotranslate django `.po` translation files package built on top of  [deep-translator](https://pypi.org/project/deep-translator/)
