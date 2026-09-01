@@ -1,3 +1,5 @@
+<img src="django_auto_translator.svg" alt="django_auto_translator" width="120">
+
 # ![django-deep-translator](img/django-deep-translator.png ) django-auto-translator  
 
 Autotranslate django `.po` translation files package built on top of  [deep-translator](https://pypi.org/project/deep-translator/)

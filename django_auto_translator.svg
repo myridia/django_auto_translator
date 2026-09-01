@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#0D47A1"/>
+  <text x="50" y="42" font-family="sans-serif" font-size="16" fill="#FFF" text-anchor="middle" font-weight="bold">A</text>
+  <text x="50" y="68" font-family="sans-serif" font-size="16" fill="#FFF" text-anchor="middle" font-weight="bold">文</text>
+  <path d="M35 50 L65 50" stroke="#FFF" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6" fill="#FFF"/></marker></defs>
+</svg>
